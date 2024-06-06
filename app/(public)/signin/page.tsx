@@ -1,27 +1,22 @@
 "use client";
 
-import Link from "next/link";
 import { FormEvent, useState } from "react";
+import Link from "next/link";
 
-export default function Register() {
+export default function Login() {
   const [submitEnabled, setSubmitEnabled] = useState(false);
   const [formState, setFormState] = useState({
     emailValue: "",
     passwordValue: "",
-    confirmPasswordValue: "",
   });
 
   const onEmailChangeHandler = (e: FormEvent<HTMLInputElement>) => {
     setFormState({
       emailValue: e.currentTarget.value,
       passwordValue: formState.passwordValue,
-      confirmPasswordValue: formState.confirmPasswordValue,
     });
     setSubmitEnabled(
-      e.currentTarget.value !== "" &&
-        formState.passwordValue !== "" &&
-        formState.confirmPasswordValue !== "" &&
-        formState.passwordValue === formState.confirmPasswordValue,
+      e.currentTarget.value !== "" && formState.passwordValue !== "",
     );
   };
 
@@ -29,27 +24,9 @@ export default function Register() {
     setFormState({
       emailValue: formState.emailValue,
       passwordValue: e.currentTarget.value,
-      confirmPasswordValue: formState.confirmPasswordValue,
     });
     setSubmitEnabled(
-      formState.emailValue !== "" &&
-        e.currentTarget.value !== "" &&
-        formState.confirmPasswordValue !== "" &&
-        e.currentTarget.value === formState.confirmPasswordValue,
-    );
-  };
-
-  const onConfirmPasswordChangeHandler = (e: FormEvent<HTMLInputElement>) => {
-    setFormState({
-      emailValue: formState.emailValue,
-      passwordValue: formState.passwordValue,
-      confirmPasswordValue: e.currentTarget.value,
-    });
-    setSubmitEnabled(
-      formState.emailValue !== "" &&
-        formState.passwordValue !== "" &&
-        e.currentTarget.value !== "" &&
-        formState.passwordValue === e.currentTarget.value,
+      formState.emailValue !== "" && e.currentTarget.value !== "",
     );
   };
 
@@ -60,19 +37,19 @@ export default function Register() {
   };
 
   return (
-    <main className="mx-auto grid min-h-screen w-full grid-cols-1 items-center justify-center bg-gradient-to-tr from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% px-4 lg:grid-cols-2 lg:justify-end">
+    <main className="mx-auto grid min-h-screen w-full grid-cols-1 items-center justify-center bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 px-4 lg:grid-cols-2 lg:justify-end">
       <section className="mx-auto box-border rounded-md border border-white bg-white px-10 py-4 shadow-2xl md:max-w-md lg:max-w-lg">
         <div className="m-0 flex w-full flex-col items-start justify-between gap-8 p-0">
           <h1 className="w-full py-4 text-center text-4xl font-bold leading-relaxed text-slate-700 antialiased">
             Hackathon Helper
           </h1>
           <h2 className="w-full py-4 pb-0 text-center text-base font-bold text-zinc-500 antialiased">
-            Sign up to continue
+            Welcome back
           </h2>
         </div>
         <form
-          action="/signup"
-          className="container box-border grid grid-cols-1 items-center justify-center gap-4 p-4 pb-0"
+          action="/signin"
+          className="container box-border grid grid-cols-1 items-center justify-center gap-4 p-4"
           onSubmit={submitHandler}
         >
           <div className="flex w-full flex-col items-start justify-start gap-1">
@@ -102,38 +79,32 @@ export default function Register() {
               value={formState.passwordValue}
               onChange={onPasswordChangeHandler}
             />
-          </div>
-          <div className="flex w-full flex-col items-start justify-start gap-1">
-            <label className="text-stone-700" htmlFor="confirm-password">
-              Confirm Password:
-            </label>
-            <input
-              required
-              id="confirm-password"
-              name="confirm-password"
-              type="password"
-              className="w-full rounded border border-zinc-300 p-2 focus:outline-none focus:ring"
-              value={formState.confirmPasswordValue}
-              onChange={onConfirmPasswordChangeHandler}
-            />
+            <div className="flex w-full items-end justify-end">
+              <Link
+                className="rounded text-sm text-stone-700 hover:text-fuchsia-500 focus:outline-none focus:ring focus:ring-fuchsia-500 focus:ring-offset-2"
+                href="/forgot-password"
+              >
+                Forgot Password?
+              </Link>
+            </div>
           </div>
           <div className="w-full pb-0 pt-6">
             <button
               disabled={!submitEnabled}
               type="submit"
-              className="w-full rounded bg-blue-700 p-2 font-bold text-white focus:outline-none focus:ring focus:ring-offset-4 disabled:pointer-events-none disabled:bg-stone-500"
+              className="w-full rounded bg-blue-700 p-2 font-bold text-white focus:outline-none focus:ring focus:ring-fuchsia-500 focus:ring-offset-4 disabled:pointer-events-none disabled:bg-stone-500"
             >
-              Sign Up
+              Sign In
             </button>
-            <div className="relative mt-6 flex w-full items-end justify-end pt-4 before:absolute before:left-1/4 before:top-0 before:w-2/4 before:content-center before:border-t before:border-stone-300">
+            <div className="relative mt-6 flex w-full items-end justify-end pt-6 before:absolute before:left-1/4 before:top-0 before:w-2/4 before:content-center before:border-t before:border-stone-300">
               <Link
                 className="rounded text-xs text-stone-700 focus:outline-none focus:ring focus:ring-fuchsia-500 focus:ring-offset-4"
-                href="/signin"
+                href="/signup"
               >
                 {" "}
-                Already a member?{" "}
+                Don&apos;t have an account?{" "}
                 <em className="font-bold uppercase not-italic text-blue-700">
-                  Sign in
+                  Sign Up Now
                 </em>
               </Link>
             </div>
