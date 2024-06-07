@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { FormEvent, useState } from "react";
 
@@ -60,8 +61,35 @@ export default function Register() {
   };
 
   return (
-    <main className="mx-auto grid min-h-screen w-full grid-cols-1 items-center justify-center bg-gradient-to-tr from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% px-4 lg:grid-cols-2 lg:justify-end">
-      <section className="mx-auto box-border rounded-md border border-white bg-white px-10 py-4 shadow-2xl md:max-w-md lg:max-w-lg">
+    <main className="mx-auto grid min-h-screen w-full grid-cols-1 items-center justify-center bg-gradient-to-tr from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% px-4 lg:grid-cols-8 lg:justify-end xl:grid-cols-6">
+      <section className="container hidden lg:col-span-5 lg:col-start-1 lg:grid lg:place-items-center xl:col-span-3 xl:col-start-2 xl:place-items-start">
+        <figure className="flex w-4/5 overflow-hidden rounded-xl bg-slate-100/45 p-0 shadow-lg shadow-blue-900/35 backdrop-blur-xl dark:bg-slate-800">
+          <Image
+            className="mx-auto h-24 w-24 rounded-none md:h-auto md:w-48"
+            src="https://tailwindcss.com/_next/static/media/sarah-dayan.de9b3815.jpg"
+            alt=""
+            width="384"
+            height="512"
+          />
+          <div className="space-y-4 p-4 text-left xl:p-8 xl:pt-6">
+            <blockquote>
+              <p className="font-medium xl:text-lg">
+                “Tailwind CSS is the only framework that I&apos;ve seen scale on
+                large teams. It&apos;s easy to customize, adapts to any design,
+                and the build size is tiny.”
+              </p>
+            </blockquote>
+            <figcaption className="font-medium">
+              <div className="text-sky-500 dark:text-sky-400">Sarah Dayan</div>
+              <div className="text-slate-700 dark:text-slate-500">
+                Staff Engineer, Algolia
+              </div>
+            </figcaption>
+          </div>
+        </figure>
+      </section>
+
+      <section className="col-span-1 mx-auto box-border rounded-md border border-white bg-white px-10 py-4 shadow-2xl md:max-w-md lg:col-start-6 lg:col-span-3 lg:max-w-lg xl:col-span-2">
         <div className="m-0 flex w-full flex-col items-start justify-between gap-8 p-0">
           <h1 className="w-full py-4 text-center text-4xl font-bold leading-relaxed text-slate-700 antialiased">
             Hackathon Helper

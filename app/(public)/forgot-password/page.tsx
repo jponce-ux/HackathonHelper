@@ -2,9 +2,11 @@
 
 import { FormEvent, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function ForgotPassword() {
   const [submitEnabled, setSubmitEnabled] = useState(false);
+  const [submitSucess, setSubmitSucess] = useState(false);
   const [formState, setFormState] = useState("");
 
   const onEmailChangeHandler = (e: FormEvent<HTMLInputElement>) => {
@@ -17,18 +19,23 @@ export default function ForgotPassword() {
     e.stopPropagation();
     console.log(e);
     console.log(formState);
+    setSubmitSucess(true);
+    setSubmitEnabled(false);
   };
 
   return (
     <main className="mx-auto grid min-h-screen w-full grid-cols-1 items-center justify-center bg-gradient-to-tl from-sky-600 from-0% via-sky-900 to-slate-800 to-70% px-4">
       <section className="mx-auto box-border rounded-md border border-white bg-white px-10 py-4 shadow-2xl md:max-w-md lg:max-w-lg">
-        <div className="m-0 flex w-full flex-col items-center justify-center gap-8 p-0">
+        <div
+          className={`m-0 flex w-full flex-col items-center justify-center p-0 ${submitSucess ? "gap-4" : "gap-8"}`}
+        >
           <h1 className="w-full py-4 text-center text-4xl font-bold leading-relaxed text-slate-700 antialiased">
             Forgot Password?
           </h1>
           <h2 className="w-3/4 py-4 pb-0 text-center text-base font-normal text-zinc-500 antialiased">
-            Enter your email address and we&apos;ll send you a link to reset
-            your password
+            {!submitSucess
+              ? "Enter your email address and we&apos;ll send you a link to reset your password"
+              : "We just sent an email to your inbox with a link to reset your password"}
           </h2>
         </div>
         <form
@@ -36,7 +43,18 @@ export default function ForgotPassword() {
           className="container box-border grid grid-cols-1 items-center justify-center gap-4 p-4"
           onSubmit={submitHandler}
         >
-          <div className="flex w-full flex-col items-start justify-start gap-1">
+          <div className="grid place-items-center">
+            <Image
+              className={`h-40 w-40 rounded ${!submitSucess && "hidden"}`}
+              src={"/iagenerated/avion-papel.png"}
+              alt="Already sent email icon"
+              width="384"
+              height="384"
+            />
+          </div>
+          <div
+            className={`flex w-full flex-col items-start justify-start gap-1 ${submitSucess && "hidden"}`}
+          >
             <label className="text-stone-700" htmlFor="email">
               Email:
             </label>
@@ -50,7 +68,7 @@ export default function ForgotPassword() {
               onChange={onEmailChangeHandler}
             />
           </div>
-          <div className="w-full pb-0 pt-6">
+          <div className={`w-full pb-0 ${submitSucess ? "pt-2" : "pt-6"} `}>
             <button
               disabled={!submitEnabled}
               type="submit"
