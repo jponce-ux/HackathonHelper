@@ -61,37 +61,54 @@ export default function Register() {
   };
 
   return (
-    <main className="mx-auto grid min-h-screen w-full grid-cols-1 items-center justify-center bg-gradient-to-tr from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% px-4 lg:grid-cols-8 lg:justify-end xl:grid-cols-6">
-      <section className="container hidden lg:col-span-5 lg:col-start-1 lg:grid lg:place-items-center xl:col-span-3 xl:col-start-2 xl:place-items-start">
-        <figure className="flex w-4/5 overflow-hidden rounded-xl bg-slate-100/45 p-0 shadow-lg shadow-blue-900/35 backdrop-blur-xl dark:bg-slate-800">
-          <Image
-            className="mx-auto h-24 w-24 rounded-none md:h-auto md:w-48"
-            src="https://tailwindcss.com/_next/static/media/sarah-dayan.de9b3815.jpg"
-            alt=""
-            width="384"
-            height="512"
-          />
-          <div className="space-y-4 p-4 text-left xl:p-8 xl:pt-6">
-            <blockquote>
-              <p className="font-medium xl:text-lg">
-                “Tailwind CSS is the only framework that I&apos;ve seen scale on
-                large teams. It&apos;s easy to customize, adapts to any design,
-                and the build size is tiny.”
-              </p>
-            </blockquote>
-            <figcaption className="font-medium">
-              <div className="text-sky-500 dark:text-sky-400">Sarah Dayan</div>
-              <div className="text-slate-700 dark:text-slate-500">
-                Staff Engineer, Algolia
+    <main className="mx-auto grid min-h-screen w-full grid-cols-1 items-center justify-center bg-gradient-to-tr from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% px-4 xl:grid-cols-6">
+      <section className="container hidden xl:col-span-4 xl:col-start-1 xl:grid xl:place-items-center">
+        <figure className="block w-11/12 overflow-hidden rounded-xl bg-slate-50/50 p-8 shadow-lg shadow-blue-900/35 backdrop-blur-xl 2xl:w-8/12 dark:bg-slate-800">
+          <div className="image-container relative float-left mr-4 overflow-hidden rounded-bl-xl rounded-tl-xl">
+            <Image
+              className="xl:h-max xl:w-56"
+              src="/testimonios/SebaPeladios.png"
+              alt=""
+              width="384"
+              height="512"
+            />
+            <figcaption className="absolute bottom-0 left-0 box-border w-full rounded-bl-xl border-none bg-slate-950/30 px-2 py-1 font-medium backdrop-blur-xl">
+              <div className="font-bold text-sky-400 dark:text-sky-400">
+                Seba Peladios
+              </div>
+              <div className="text-slate-50 dark:text-slate-50">
+                Gobernante del mundo
               </div>
             </figcaption>
+          </div>
+
+          <div className="text-left">
+            <blockquote>
+              <p className="whitespace-pre-line text-left text-base font-medium leading-relaxed text-gray-900 antialiased">
+                “Quer&iacute;a crear una herramienta nueva y la app nos
+                abri&oacute; un nuevo universo: primero me sugiri&oacute; la
+                opci&oacute;n de crear una red social donde las personas
+                matcheen cuando coinciden con lo que sue&ntilde;an mientras
+                duermen. Si hay m&aacute;s de cuatro personas con un mismo
+                sue&ntilde;o, sugiri&oacute; rooms tem&aacute;ticos sobre sueños
+                específicos o que se parezcan entre un 50/75% (calcul&oacute;
+                que es el porcentaje mínimo para que varias personas charlen
+                sobre sue&ntilde;os sin distraerse). Incluso sugiri&oacute; una
+                room para quienes no recuerdan lo que sue&ntilde;an! Para hablar
+                sobre c&oacute;mo duermen (aire acondicionado encendido o
+                apagado; mascotas en la cama sí o no…). En la semana 1 se
+                suscribieron 666.969 usuarios! Creciendo exponencialmente desde
+                entonces. Gracias a eso creamos nuestra propia cirptomoneda:
+                dreamcoin. Realmente lo recomiendo!”
+              </p>
+            </blockquote>
           </div>
         </figure>
       </section>
 
-      <section className="col-span-1 mx-auto box-border rounded-md border border-white bg-white px-10 py-4 shadow-2xl md:max-w-md lg:col-start-6 lg:col-span-3 lg:max-w-lg xl:col-span-2">
+      <section className="col-span-1 mx-auto box-border rounded-md border border-white bg-white px-10 py-4 shadow-2xl xl:col-span-2 xl:col-start-5">
         <div className="m-0 flex w-full flex-col items-start justify-between gap-8 p-0">
-          <h1 className="w-full py-4 text-center text-4xl font-bold leading-relaxed text-slate-700 antialiased">
+          <h1 className="w-full py-4 text-center text-2xl font-bold leading-relaxed text-slate-700 antialiased sm:text-3xl md:text-4xl">
             Hackathon Helper
           </h1>
           <h2 className="w-full py-4 pb-0 text-center text-base font-bold text-zinc-500 antialiased">
