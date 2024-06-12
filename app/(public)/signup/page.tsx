@@ -2,15 +2,20 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { FormEvent, useState } from "react";
+import React, { FormEvent, useState } from "react";
 
 export default function Register() {
+  const [readMore, setReadMore] = useState(false);
   const [submitEnabled, setSubmitEnabled] = useState(false);
   const [formState, setFormState] = useState({
     emailValue: "",
     passwordValue: "",
     confirmPasswordValue: "",
   });
+
+  const readMoreHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setReadMore(!readMore);
+  };
 
   const onEmailChangeHandler = (e: FormEvent<HTMLInputElement>) => {
     setFormState({
@@ -63,8 +68,8 @@ export default function Register() {
   return (
     <main className="mx-auto grid min-h-screen w-full grid-cols-1 items-center justify-center bg-gradient-to-tr from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% px-4 xl:grid-cols-6">
       <section className="container hidden xl:col-span-4 xl:col-start-1 xl:grid xl:place-items-center">
-        <figure className="block w-11/12 overflow-hidden rounded-xl bg-slate-50/50 p-8 shadow-lg shadow-blue-900/35 backdrop-blur-xl 2xl:w-8/12 dark:bg-slate-800">
-          <div className="image-container relative float-left mr-4 overflow-hidden rounded-bl-xl rounded-tl-xl">
+        <figure className="relative block w-11/12 overflow-hidden rounded-xl bg-slate-50/50 p-8 shadow-lg shadow-blue-900/35 backdrop-blur-xl 2xl:w-8/12 dark:bg-slate-800">
+          <div className="image-container relative float-left mr-4 overflow-hidden rounded-xl">
             <Image
               className="xl:h-max xl:w-56"
               src="/testimonios/SebaPeladios.png"
@@ -72,36 +77,54 @@ export default function Register() {
               width="384"
               height="512"
             />
-            <figcaption className="absolute bottom-0 left-0 box-border w-full rounded-bl-xl border-none bg-slate-950/30 px-2 py-1 font-medium backdrop-blur-xl">
+            <figcaption className="absolute bottom-0 left-0 box-border w-full rounded-bl-xl rounded-br-xl border-none bg-slate-950/30 px-2 py-1 font-medium backdrop-blur-xl">
               <div className="font-bold text-sky-400 dark:text-sky-400">
                 Seba Peladios
               </div>
-              <div className="text-slate-50 dark:text-slate-50">
-                Gobernante del mundo
-              </div>
+              <div className="text-slate-50 dark:text-slate-50">CEO, Umbra</div>
             </figcaption>
           </div>
 
-          <div className="text-left">
+          <div className={`text-left ${!readMore ? "flex flex-col" : "block"}`}>
             <blockquote>
-              <p className="whitespace-pre-line text-left text-base font-medium leading-relaxed text-gray-900 antialiased">
+              <p
+                className={`whitespace-pre-line text-balance text-left text-base font-medium leading-relaxed text-gray-900 antialiased ${!readMore && "line-clamp-6"}`}
+              >
                 “Quer&iacute;a crear una herramienta nueva y la app nos
                 abri&oacute; un nuevo universo: primero me sugiri&oacute; la
                 opci&oacute;n de crear una red social donde las personas
                 matcheen cuando coinciden con lo que sue&ntilde;an mientras
-                duermen. Si hay m&aacute;s de cuatro personas con un mismo
-                sue&ntilde;o, sugiri&oacute; rooms tem&aacute;ticos sobre sueños
-                específicos o que se parezcan entre un 50/75% (calcul&oacute;
-                que es el porcentaje mínimo para que varias personas charlen
-                sobre sue&ntilde;os sin distraerse). Incluso sugiri&oacute; una
-                room para quienes no recuerdan lo que sue&ntilde;an! Para hablar
-                sobre c&oacute;mo duermen (aire acondicionado encendido o
-                apagado; mascotas en la cama sí o no…). En la semana 1 se
-                suscribieron 666.969 usuarios! Creciendo exponencialmente desde
-                entonces. Gracias a eso creamos nuestra propia cirptomoneda:
-                dreamcoin. Realmente lo recomiendo!”
+                duermen. <br /> Si hay m&aacute;s de cuatro personas con un
+                mismo sue&ntilde;o, sugiri&oacute; rooms tem&aacute;ticos sobre
+                sueños específicos o que se parezcan entre un 50/75%
+                (calcul&oacute; que es el porcentaje mínimo para que varias
+                personas charlen sobre sue&ntilde;os sin distraerse).
+                <br /> Incluso sugiri&oacute; una room para quienes no recuerdan
+                lo que sue&ntilde;an! Para hablar sobre c&oacute;mo duermen
+                (aire acondicionado encendido o apagado; mascotas en la cama sí
+                o no…).
+                <br /> <br />
+                En la semana 1 se suscribieron 666.969 usuarios! Creciendo
+                exponencialmente desde entonces. Gracias a eso creamos nuestra
+                propia cirptomoneda: dreamcoin. Realmente lo recomiendo!”
               </p>
             </blockquote>
+            <button
+              onClick={readMoreHandler}
+              className={`mt-4 h-12 w-12 animate-bounce flex-col items-center justify-center self-end rounded-full border-2 border-gray-700 bg-transparent text-center font-bold ${!readMore ? "flex" : "hidden"}`}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"
+                height="24"
+              >
+                <path
+                  fill="#374151"
+                  stroke-width="1"
+                  d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+                />
+              </svg>
+            </button>
           </div>
         </figure>
       </section>
