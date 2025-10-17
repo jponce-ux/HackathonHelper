@@ -44,11 +44,11 @@ export default function PrivatePages({
             </li>
             <li className="w-full">
               <Link
-                href="/dashboard/analysis"
+                href="/projects"
                 className="block w-full px-4 text-white hover:bg-slate-800 hover:text-white dark:text-slate-50 dark:hover:text-white dark:hover:bg-slate-700"
               >
                 <span className="block w-full border-b border-gray-300 py-4">
-                  Analysis
+                  Projects
                 </span>
               </Link>
             </li>
@@ -64,7 +64,17 @@ export default function PrivatePages({
             </li>
             <li className="w-full">
               <Link
-                href="/dashboard/settings"
+                href="/analysis"
+                className="block w-full px-4 text-white hover:bg-slate-800 hover:text-white dark:text-slate-50 dark:hover:text-white dark:hover:bg-slate-700"
+              >
+                <span className="block w-full border-b border-gray-300 py-4">
+                  Analysis
+                </span>
+              </Link>
+            </li>
+            <li className="w-full">
+              <Link
+                href="/settings"
                 className="block w-full px-4 text-white hover:bg-slate-800 hover:text-white dark:text-slate-50 dark:hover:text-white dark:hover:bg-slate-700"
               >
                 <span className="block w-full border-b border-gray-300 py-4">
